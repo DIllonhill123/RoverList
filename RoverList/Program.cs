@@ -10,6 +10,7 @@ namespace RoverList
     {
         static void Main(string[] args)
         {
+            RoverList List = new RoverList();
             // TODO:  Implement the RoverList class
             // TODO:  Create a RoverList and then fill it with 16 words
 

@@ -19,17 +19,32 @@ namespace RoverList
 
         public override void Add(object data)
         {
-            throw new NotImplementedException();
+            if(head == null)
+            {
+                head = new Node(data);
+                current = head;
+            }
+            else
+            {
+                current.Next = new Node(data);
+                current = current.Next;
+            }
         }
 
         public override void Add(int Position, object data)
         {
-            throw new NotImplementedException();
+            current = head;
+            for(int i = 0; i < Position; i++)
+            {
+                current.Next = current;
+            }
+            current = null;
+            Add(data);
         }
 
         public override void Clear()
         {
-            throw new NotImplementedException();
+            head = null;
         }
 
         public override Node ElementAt(int Position)
