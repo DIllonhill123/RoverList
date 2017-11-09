@@ -10,6 +10,7 @@ namespace RoverList
     {
         // Add any variables you need here
         int count;
+        Node Temp;
         public RoverList ()
         {
 
@@ -48,18 +49,20 @@ namespace RoverList
                 {
                     current = current.Next;
                 }
-                
+
+                Temp = current.Next;
                 current.Next = new Node(data);
                 current = current.Next;
+                current.Next = Temp;
                 
             }
-            
         }
 
         public override void Clear()
         {
             head = null;
         }
+        
 
         public override Node ElementAt(int Position)
         {
@@ -82,7 +85,22 @@ namespace RoverList
 
         public override bool RemoveAt(int Position)
         {
-            throw new NotImplementedException();
+            current = head;
+            Temp = null;
+             
+            for(int i = 0; i < Position - 1; i++)
+            {
+                current = current.Next;
+                
+            }
+            Temp = current.Next;
+            current = null;
+            current = Temp;
+
+
+
+
+            return true;
         }
     }
 }

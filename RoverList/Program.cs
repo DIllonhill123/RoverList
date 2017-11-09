@@ -25,7 +25,8 @@ namespace RoverList
 
             // TODO:  Remove every 3rd word
             // TODO:  Print out the list
-
+            List.RemoveAt(3);
+            List.ListNodes();
             // TODO:  Prompt the user to input words, add those words to the list until they enter the word "done"
             // TODO:  Print out the list
 
