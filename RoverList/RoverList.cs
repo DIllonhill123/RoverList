@@ -16,7 +16,10 @@ namespace RoverList
 
         }
 
-        public override int Count => throw new NotImplementedException();
+        public override int Count
+        {
+            get;
+        }
 
         public override void Add(object data)
         {
@@ -66,7 +69,24 @@ namespace RoverList
 
         public override Node ElementAt(int Position)
         {
-            throw new NotImplementedException();
+            current = head;
+
+            if(Position == 0)
+            {
+                Console.WriteLine(head.Data);
+            }
+            else
+            {
+                for(int i = 0; i < Position; i++)
+                {
+                    current = current.Next;
+                }
+                if(current == null)
+                {
+                    return null;
+                }
+                return current;
+            }
         }
 
         public override void ListNodes()
@@ -87,19 +107,23 @@ namespace RoverList
         {
             current = head;
             Temp = null;
-             
-            for(int i = 0; i < Position - 1; i++)
+
+            if (Position == 0)
             {
-                current = current.Next;
-                
+                Temp = head.Next;
+                head = null;
+                head = Temp;
             }
-            Temp = current.Next;
-            current = null;
-            current = Temp;
-
-
-
-
+            else
+            {
+                for (int i = 0; i < Position - 1; i++)
+                {
+                    current = current.Next;
+                }
+                Temp = current.Next.Next;
+                current.Next = null;
+                current.Next = Temp;
+            }
             return true;
         }
     }
