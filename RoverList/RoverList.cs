@@ -11,15 +11,16 @@ namespace RoverList
         // Add any variables you need here
         int count;
         Node Temp;
+        //private Node tail;
+
         public RoverList ()
         {
-
+            count = 0;
+            head = null;
+            //tail = null;
         }
 
-        public override int Count
-        {
-            get;
-        }
+        public override int Count => count;
 
         public override void Add(object data)
         {
@@ -34,6 +35,10 @@ namespace RoverList
                 current.Next = new Node(data);
                 current = current.Next;
                 count++;
+            }
+            while(current.Next != null)
+            {
+                current = current.Next;
             }
         }
 
@@ -59,11 +64,17 @@ namespace RoverList
                 current.Next = Temp;
                 
             }
+            count++;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
         }
 
         public override void Clear()
         {
             head = null;
+            count = 0;
         }
         
 
@@ -74,6 +85,7 @@ namespace RoverList
             if(Position == 0)
             {
                 Console.WriteLine(head.Data);
+                return head;
             }
             else
             {
@@ -86,18 +98,19 @@ namespace RoverList
                     return null;
                 }
                 return current;
+                
             }
         }
 
         public override void ListNodes()
         {
-            current = head;
+            Node node = head;
             
              
-            while(current != null)
+            while(node != null)
             {
-                Console.WriteLine(current.Data);
-                current = current.Next;
+                Console.WriteLine(node.Data);
+                node = node.Next;
                 
             }
             
@@ -123,6 +136,11 @@ namespace RoverList
                 Temp = current.Next.Next;
                 current.Next = null;
                 current.Next = Temp;
+            }
+            count--;
+            while (current.Next != null)
+            {
+                current = current.Next;
             }
             return true;
         }
