@@ -84,7 +84,6 @@ namespace RoverList
 
             if(Position == 0)
             {
-                Console.WriteLine(head.Data);
                 return head;
             }
             else
@@ -98,7 +97,7 @@ namespace RoverList
                     return null;
                 }
                 return current;
-                
+
             }
         }
 
@@ -106,12 +105,10 @@ namespace RoverList
         {
             Node node = head;
             
-             
             while(node != null)
             {
                 Console.WriteLine(node.Data);
                 node = node.Next;
-                
             }
             
         }
@@ -126,6 +123,7 @@ namespace RoverList
                 Temp = head.Next;
                 head = null;
                 head = Temp;
+                count--;
             }
             else
             {
@@ -136,8 +134,9 @@ namespace RoverList
                 Temp = current.Next.Next;
                 current.Next = null;
                 current.Next = Temp;
+                count--;
             }
-            count--;
+            //count--;
             while (current.Next != null)
             {
                 current = current.Next;

@@ -12,10 +12,13 @@ namespace RoverList
         {
             RoverList List = new RoverList();
             string input = "";
+            string check;
+            int pos = List.Count - 1;
             // TODO:  Implement the RoverList class
             // TODO:  Create a RoverList and then fill it with 16 words\
             List.Add("1");
             List.Add("2");
+            List.Add("3");
             List.Add("4");
             List.Add("5");
             List.Add("6");
@@ -62,7 +65,7 @@ namespace RoverList
             // TODO:  Prompt the user to input words, add those words to the FRONT of the list until they enter the word "done"
             // TODO:  Print out the list
 
-            Console.WriteLine("Input words into the list(type \"done\" when finished):");
+            Console.WriteLine("Input words into the top of the list(type \"done\" when finished):");
             while (input != "done")
             {
                 input = Console.ReadLine();
@@ -77,16 +80,19 @@ namespace RoverList
             // TODO:  Remove every word with an odd length
             // TODO:  Print out the list
 
-            for(int i = 0; i < List.Count; i++)
+            //while(List.ElementAt(pos) != null)
+            while(pos >= 0)
             {
-                if (List.ElementAt(i).Data.ToString().Length % 2 == 1)
+                check = (String)(List.ElementAt(pos).Data);
+                if (check.Length % 2 == 1)
                 {
-                    List.RemoveAt(i);
+                    List.RemoveAt(pos);
                 }
+                pos--;
             }
             List.ListNodes();
             Console.WriteLine("");
-
+            
             // TODO:  Clear the list
             // TODO:  Print out the list
             List.Clear();
