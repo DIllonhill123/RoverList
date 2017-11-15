@@ -79,13 +79,14 @@ namespace RoverList
 
             // TODO:  Remove every word with an odd length
             // TODO:  Print out the list
-            pos = List.Count;
+            pos = List.Count - 1;
             while (pos >= 0)
             {
-                check = List.ElementAt(pos - 1).Data.ToString();
+                check = List.ElementAt(pos).Data.ToString();
                 if (check.Length % 2 != 0)
                 {
-                    List.RemoveAt(pos - 1);
+                    List.RemoveAt(pos);
+                    
                 }
                 pos--;
             }

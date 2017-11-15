@@ -81,20 +81,19 @@ namespace RoverList
         public override Node ElementAt(int Position)
         {
             current = head;
+            int counter = 0;
 
-            if(Position == 0)
+            if(Position < 0 || Position > Count)
             {
-                return head;
+                Node node = new Node(null);
+                return node;
             }
             else
             {
-                for(int i = 0; i < Position; i++)
+                while(counter < Position - 1)
                 {
                     current = current.Next;
-                }
-                if(current == null)
-                {
-                    return null;
+                    counter++;
                 }
                 return current;
 
@@ -125,6 +124,14 @@ namespace RoverList
                 head = Temp;
                 count--;
             }
+            if(Count - Position == 1)
+            {
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                }
+                current = null;
+            }
             else
             {
                 for (int i = 0; i < Position - 1; i++)
@@ -135,12 +142,13 @@ namespace RoverList
                 current.Next = null;
                 current.Next = Temp;
                 count--;
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                }
             }
             //count--;
-            while (current.Next != null)
-            {
-                current = current.Next;
-            }
+
             return true;
         }
     }
