@@ -90,7 +90,7 @@ namespace RoverList
             }
             else
             {
-                while(counter < Position - 1)
+                while(counter <= Position - 1)
                 {
                     current = current.Next;
                     counter++;
@@ -114,9 +114,43 @@ namespace RoverList
 
         public override bool RemoveAt(int Position)
         {
-            current = head;
+            current = new Node("FAKE");
+            current.Next = head;
             Temp = null;
+            int index = 0;
 
+            while (index <= Position && current != null)
+            {
+                if (index == Position)
+                {
+                    // Remove current.next
+                    if (current.Next == head)
+                        head = current.Next.Next;
+
+                    current.Next = current.Next.Next;
+
+                    current = head;
+                    while (current.Next != null)
+                    {
+                        current = current.Next;
+                    }
+                    count--;
+                    return true;
+                }
+                current = current.Next;
+                index++;
+            }
+
+
+            current = head;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+
+            return false;
+
+            /*
             if (Position == 0)
             {
                 Temp = head.Next;
@@ -124,13 +158,16 @@ namespace RoverList
                 head = Temp;
                 count--;
             }
-            if(Count - Position == 1)
+            if(Position - 1 == Count - 1)
             {
                 while (current.Next != null)
                 {
                     current = current.Next;
                 }
                 current = null;
+                count--;
+                
+
             }
             else
             {
@@ -150,6 +187,7 @@ namespace RoverList
             //count--;
 
             return true;
+            */
         }
     }
 }
